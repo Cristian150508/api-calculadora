@@ -61,7 +61,7 @@ public class PaginaController {
 	@PostMapping("/Calculadora/divisao")
 	public PaginaResposta divisao (@RequestBody PaginaRequisicao requisicao) {
 		
-		double resultado = paginaService.divisao (
+		double resultado = paginaService.dividir (
 				requisicao.getNum1(),
 				requisicao.getNum2()
 				);
