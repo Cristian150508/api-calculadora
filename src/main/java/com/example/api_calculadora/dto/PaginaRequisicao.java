@@ -5,7 +5,8 @@ public class PaginaRequisicao {
 	private double num1;
 	private double num2;
 	
-	
+	public PaginaRequisicao() {
+	}
 	public PaginaRequisicao(double num1, double num2) {
 		super();
 		this.num1 = num1;

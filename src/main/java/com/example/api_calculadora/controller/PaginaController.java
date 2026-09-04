@@ -6,17 +6,22 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.api_calculadora.dto.PaginaRequisicao;
 import com.example.api_calculadora.dto.PaginaResposta;
 import com.example.api_calculadora.service.PaginaService;
-
 @RestController
 public class PaginaController {
+
+    private final PaginaService paginaService;
+
+    public PaginaController(PaginaService paginaService) {
+        this.paginaService = paginaService;
+    }
 
     @PostMapping("/Calculadora/somar")
 	public PaginaResposta somar (@RequestBody PaginaRequisicao requisicao) {
 		
-		double resultado = PaginaService.somar (
-				requisicao.getNum1(),
-				requisicao.getNum2()
-);
+    	double resultado = paginaService.somar(
+    		    requisicao.getNum1(),
+    		    requisicao.getNum2()
+    		);
 		return new PaginaResposta (
 				requisicao.getNum1(),
 				requisicao.getNum2(),
@@ -27,7 +32,7 @@ public class PaginaController {
 	@PostMapping("/Calculadora/subtracao")
 	public PaginaResposta subtracao (@RequestBody PaginaRequisicao requisicao) {
 		
-		double resultado = PaginaService.subtracao (
+		double resultado = paginaService.subtracao (
 				requisicao.getNum1(),
 				requisicao.getNum2()
 				);
@@ -41,7 +46,7 @@ public class PaginaController {
 	@PostMapping("/Calculadora/multiplicacao")
 	public PaginaResposta multiplicacao (@RequestBody PaginaRequisicao requisicao) {
 		
-		double resultado = PaginaService.multiplicacao (
+		double resultado = paginaService.multiplicacao (
 				requisicao.getNum1(),
 				requisicao.getNum2()
 				);
@@ -56,15 +61,17 @@ public class PaginaController {
 	@PostMapping("/Calculadora/divisao")
 	public PaginaResposta divisao (@RequestBody PaginaRequisicao requisicao) {
 		
-		double resultado = PaginaService.divisao (
+		double resultado = paginaService.divisao (
 				requisicao.getNum1(),
 				requisicao.getNum2()
 				);
 		return new PaginaResposta (
 				requisicao.getNum1(),
 				requisicao.getNum2(),
-				"subtração",
+				"divisao",
 				resultado
 				);
-}
+	  
+     
+    }
 }
