@@ -1,21 +1,25 @@
 package com.example.api_calculadora.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.api_calculadora.dto.PaginaRequisicao;
 import com.example.api_calculadora.dto.PaginaResposta;
 import com.example.api_calculadora.service.PaginaService;
 @RestController
+@RequestMapping("/Calculadora")
 public class PaginaController {
 
     private final PaginaService paginaService;
-
+    
+    @Autowired
     public PaginaController(PaginaService paginaService) {
         this.paginaService = paginaService;
     }
 
-    @PostMapping("/Calculadora/somar")
+    @PostMapping("/somar")
 	public PaginaResposta somar (@RequestBody PaginaRequisicao requisicao) {
 		
     	double resultado = paginaService.somar(
@@ -29,7 +33,7 @@ public class PaginaController {
 				resultado
 				);
 	}
-	@PostMapping("/Calculadora/subtracao")
+	@PostMapping("/subtracao")
 	public PaginaResposta subtracao (@RequestBody PaginaRequisicao requisicao) {
 		
 		double resultado = paginaService.subtracao (
@@ -43,7 +47,7 @@ public class PaginaController {
 				resultado
 				);
 	}
-	@PostMapping("/Calculadora/multiplicacao")
+	@PostMapping("/multiplicacao")
 	public PaginaResposta multiplicacao (@RequestBody PaginaRequisicao requisicao) {
 		
 		double resultado = paginaService.multiplicacao (
@@ -58,7 +62,7 @@ public class PaginaController {
 				);
 	
 	}
-	@PostMapping("/Calculadora/divisao")
+	@PostMapping("/divisao")
 	public PaginaResposta divisao (@RequestBody PaginaRequisicao requisicao) {
 		
 		double resultado = paginaService.dividir (
